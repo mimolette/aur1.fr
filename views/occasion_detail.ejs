@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- import des polices -->
+        <link rel="stylesheet" href="../../../stylesheets/polices_style.css" />
+        <!-- style général -->
+        <link rel="stylesheet" href="../../../stylesheets/main_style.css" />
+
+        <!--<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+        <script src="http://vjs.zencdn.net/4.12/video.js"></script>-->
+        <title>Aur1</title>
+    </head>
+
+    <body style="
+        background : url('../../../<%= choice.imgbandeau %>') no-repeat fixed center;
+        background-size: cover;
+    ">
+
+        <!-- La barre horizontale supérieure de la fenêtre, elle contient
+        quelques liens vers les autres sections et peut etre un fonction de
+        recherche de machine -->
+        <div id="main_top_barre">
+            <div id="main_top_barre_contenu">
+                <a href="../../../../" class="main_return"><img src="../../../images/Retour_acceuil.svg"/></a>
+                <a href="/section/<%= choice._id %>" class="main_top_bordered" style="order : <%= choice.ordre %>"><%= choice.nom %></a>
+                <% for (var i = 0; i < no_choice.length; i++) { %>
+                    <a href="/section/<%= no_choice[i]._id %>/gamme" class="main_top_bordered" style="order : <%= no_choice[i].ordre %>"><%= no_choice[i].nom %></a>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Le bandeau du menu et du logo de l'entreprise -->
+        <div id="main_menu" style="
+        background: -webkit-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        background: -o-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        background: -moz-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        background: linear-gradient(to right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        ">
+            <div id="main_menu_contenu">
+                <a href="/section/<%= choice._id %>" id="main_menu_img"></a>
+                <ul>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/presentation">
+                            <span class="menu_titre">Présentation</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>">
+                            <span class="menu_titre">Les Actualités</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/gamme">
+                            <span class="menu_titre">La Gamme</span>
+                            <span class="bouton_gamme_section"><%= choice.nom %></span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/occasions">
+                            <span class="menu_titre">Les Occasions</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/contact">
+                            <span class="menu_titre">Contact</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- le bandeau qui représente la section choisi -->
+        <div id="main_section" style="
+        background: url('../../../images/path_hexagone.png') repeat, linear-gradient(240deg, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%), url('../../../images/occasions_img2.jpg') no-repeat right;
+        background-size: auto, auto, contain;
+        ">
+            <div id="main_section_titre" >Occasions</div>
+
+        </div>
+
+        <!-- Contenu de la page de présentation de la gamme -->
+        <div class="gamme_content">
+            <div class="gamme_machine_detail">
+                <div class="gamme_detail_titre" style="
+                background : url('../../../images/path_hexagone.png') repeat, linear-gradient(60deg, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%), url('../../../images/occasions_img3.jpg') no-repeat left;
+                background-size: auto, contain;
+                ">
+                    <h5><%= machine.nom_machine %></h5>
+                </div>
+
+                <!-- block qui contient le corps et la marge droite -->
+                <div class="gamme_detail_block">
+                    <div class="gamme_detail_corps">
+                        <h4>
+                            <div class="h4_partie_gauche" style="
+                            background-color : <%= choice.couleur %>;
+                            "></div>
+                            <span class="h4_titre">Description</span>
+                            <div class="h4_partie_droite" style="
+                            background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                            "></div>
+                        </h4>
+
+                        <% if (machine.date_mise_en_service) { %>
+                            <!-- Année du modèle d'occasion -->
+                            <div class="occasion_detail_annee"><!-- date de mise en service -->
+                                <span class="champ_carac">Année :</span>
+                                <span class="champ_donnee">
+                                    <%= machine.date_mise_en_service.getFullYear() %>
+                                </span>
+                            </div>
+                        <% } %>
+
+                        <div class="gamme_detail_texte_occas"> <!-- Description du modèle d'occasion -->
+                            <% for (var d = 0 ; d < machine.description.length; d++) { %>
+                                <% if (~machine.description[d].indexOf('li/')) { %>
+                                    <% if (~machine.description[d].indexOf('start/')) { %>
+                                        <ul><li><%= machine.description[d].substring(9) %></li>
+                                    <% } else if (~machine.description[d].indexOf('end/')) { %>
+                                        <li><%= machine.description[d].substring(7) %></li></ul>
+                                    <% } else { %>
+                                        <li><%= machine.description[d].substring(3) %></li>
+                                    <% } %>
+                                <% } else { %>
+                                    <p><%= machine.description[d] %></p>
+                                <% } %>
+                            <% } %>
+                        </div>
+
+                        <!-- marque -->
+                        <% if (machine.marque) { %>
+                            <% if (machine.marque.lien_web == "#") { %>
+                                <div class="gamme_detail_marque"><!-- marque de la gamme -->
+                                    <div><img src="../../../images/Marques/<%= machine.marque.logo %>" alt="<%= machine.marque.nom %>"/></div>
+                                </div>
+                            <% } else { %>
+                                <div class="gamme_detail_marque"><!-- marque de la gamme -->
+                                    <a href="<%= machine.marque.lien_web %>" target="_blank"><img src="../../../images/Marques/<%= machine.marque.logo %>" alt="<%= machine.marque.nom %>"/></a>
+                                </div>
+                            <% } %>
+                        <% } %>
+
+
+                        <!-- images -->
+                        <% if (machine.img.length) { %>
+                            <div class="news_underligne_light"></div>
+                            <div class="news_list_img">
+                                <% for (var i = 0; i < machine.img.length; i++) { %>
+                                    <a href="../../../images/Occasions/originaux/<%= machine.img[i] %>" class="html5lightbox" data-group="<%= machine._id %>" style="
+                                    background: url('../../../images/Occasions/gabarits/tn_<%= machine.img[i] %>') no-repeat center;
+                                    background-size: contain;
+                                    "></a>
+                                <% } %>
+                            </div>
+                        <% } %>
+
+
+                    </div>
+                    <div class="gamme_detail_marge">
+                        <% if (machine.culture.lenght) { %>
+                            <div><!-- cultures pour lesquelles la gamme peux s'appliquer -->
+                                <h4>
+                                    <div class="h4_partie_gauche" style="
+                                    background-color : <%= choice.couleur %>;
+                                    "></div>
+                                    <span class="h4_titre">Cultures</span>
+                                    <div class="h4_partie_droite" style="
+                                    background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                                    "></div>
+                                </h4>
+                                <div class="gamme_detail_culture_block">
+                                    
+                                    <% for (var c = 0 ; c < machine.culture.length; c++) { %>
+                                        <a class="gamme_detail_culture" href="/section/<%= choice._id %>/cultures/<%= machine.culture[c]._id %>">
+                                            <div class="gamme_detail_culture_img" style="
+                                            background : url('../../../images/Cultures/<%= machine.culture[c].img %>');
+                                            background-size: contain;
+                                            "></div>
+
+                                            <h6><%= machine.culture[c].nom %></h6>
+                                        </a>
+                                    <% } %>
+                                    
+                                </div>
+
+                            </div>
+                        <% } %>
+
+                        <% if (machine.gamme_ref) { %>
+                            <div class="occasion_detail_gamme"> <!-- référence vers la gamme -->
+                                <h4>
+                                    <div class="h4_partie_gauche" style="
+                                    background-color : <%= choice.couleur %>;
+                                    "></div>
+                                    <span class="h4_titre">Gamme</span>
+                                    <div class="h4_partie_droite" style="
+                                    background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                                    "></div>
+                                </h4>
+                                <div class="block_gammes_occas">
+                                    <a href="/section/<%= choice._id %>/gamme/<%= machine.gamme_ref._id %>">
+                                        <div class="gamme_machine_fond" style="
+                                        background : linear-gradient(320deg, rgba(255,255,255,0.0) 30% , <%= machine.gamme_ref.section[0].couleur_light %> 55%,  <%=machine.gamme_ref.section[0].couleur %> 85%);
+                                        ">
+                                            <div class="gamme_machine_style" style="
+                                            background : linear-gradient(48deg, <%= machine.gamme_ref.section[0].couleur %> 35%,  <%= machine.gamme_ref.section[0].couleur_light %> 75%);
+                                            ">
+                                                <div class="gamme_machine_titre"><%= machine.gamme_ref.nom_gamme %></div>
+                                                <div class="gamme_machine_img" style="
+                                                    background: url('../../../images/Gammes/<%= machine.gamme_ref.repertoire %>/gabarits/tn_gamme.jpg') no-repeat center;
+                                                "></div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- La bannière en bas de page -->
+        <footer>
+            <div id="main_pied_page">
+                <div id="footer_contact">
+                    <img src="../../../images/aur1_logo_small.png"/>
+                    <span id="footer_contact_texte">
+                        <h3>
+                            <div class="h3_partie_sup">
+                                <div class="h3_partie_gauche">
+                                    <div class="h3_1" style="
+                                    background-color : <%= choice.couleur_light %>;
+                                    "></div>
+                                    <div class="h3_2" style="
+                                    background-color : <%= choice.couleur_light %>;
+                                    "></div>
+                                    <div class="h3_3" style="
+                                    background-color : <%= choice.couleur %>;
+                                    "></div>
+                                </div>
+                                <span class="h3_titre" id="titre_meteo">Coordonnées</span>
+                            </div>
+                            <div class="h3_ligne_bottom" style="
+                            background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                            "></div>
+                        </h3>
+                        <span>Z.I.A de Belle Fontaine</span>
+                        <span>44270 PAULX</span>
+                        <span>Tèl  : 02 51 70 08 08</span>
+                        <span>Fax  : 02 51 70 09 93</span>
+                        <span>mail : aur1.ww@gmail.com</span>
+                    </span>
+                </div>
+                <div id="footer_interlocuteur">
+                    <h3>
+                        <div class="h3_partie_sup">
+                            <div class="h3_partie_gauche">
+                                <div class="h3_1" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_2" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_3" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                            </div>
+                            <span class="h3_titre" id="titre_meteo">Vos interlocuteurs</span>
+                        </div>
+                        <div class="h3_ligne_bottom" style="
+                        background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                        "></div>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td class="footer_italic">Commercial :</td>
+                            <td class="footer_name">Dominique</td>
+                            <td><div class="footer_puce"></div></td>
+                            <td>06 33 70 57 59</td>
+                        </tr>
+                        <tr>
+                            <td class="footer_italic">Technique :</td>
+                            <td class="footer_name">Pierrick</td>
+                            <td><div class="footer_puce"></div></td>
+                            <td>06 76 09 78 01</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="footer_plan_site">
+                    <h3>
+                        <div class="h3_partie_sup">
+                            <div class="h3_partie_gauche">
+                                <div class="h3_1" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_2" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_3" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                            </div>
+                            <span class="h3_titre" id="titre_meteo">Plan du site</span>
+                        </div>
+                        <div class="h3_ligne_bottom" style="
+                        background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                        "></div>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td><a href="/">Index</a></td>
+                            <td><a href="/section/<%= choice._id %>"><%= choice.nom %></a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= no_choice[0]._id %>"><%= no_choice[0].nom %></a></td>
+                            <td><a href="/section/<%= no_choice[1]._id %>"><%= no_choice[1].nom %></a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= no_choice[2]._id %>"><%= no_choice[2].nom %></a></td>
+                            <td><a href="/section/<%= choice._id %>/presentation">Présentation</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= choice._id %>/news">actualités</a></td>
+                            <td><a href="/section/<%= choice._id %>/occasions">Occasions</a></td>
+
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= choice._id %>/gamme">Gamme</a></td>
+                            <td><a href="/section/<%= choice._id %>/contact">Contact</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </footer>
+
+
+
+        <!-- Appel du script Jquery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <!-- API lightbox -->
+        <script type="text/javascript" src="../../../javascripts/html5lightbox/html5lightbox.js"></script>
+        <!--<script type="text/javascript" src="../../../javascripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>-->
+        <!-- Appel des scripts contextuel -->
+        <script src="../../../javascripts/section.js"></script>
+    </body>
+
+</html>

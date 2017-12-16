@@ -1,0 +1,1410 @@
+/* ----===== Page n°2 : ACCEUIL : Pepinière, maraichge, polyplanche, Plantation
+    il y a un menu horizontal classique, avec une banniere au haut et en bas, le
+    contenu se trouve au centre.
+ */
+
+ /* Les classes utilitaires */
+ .align_middle {
+     display: inline-block;
+     height: 100%;
+     width: 0%;
+     vertical-align: middle;
+ }
+
+ .main_shadow_top {
+     width: 100%;
+     height: 10px;
+     /* dev work's
+     background-color: #07364b;*/
+ }
+
+ a {
+     text-decoration: none;
+     color: black;
+ }
+
+ /* determination de la hauteur du body a 100% du viewport */
+ html {
+     height: 100%;
+ }
+ body {
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     min-height: 100%;
+     margin: 0;
+     padding: 0;
+ }
+
+ /* La barre supérieur de la fenêtre */
+ #main_top_barre {
+     width: 100%;
+     min-width: 840px;
+     box-shadow: 0px -5px 3px #000000 inset;
+     margin-bottom: 5px;
+     /* border-radius: 1em; */
+     background: #221d16 url("../images/path4718.png") repeat-x;
+     display: flex;
+     justify-content: flex-end;
+     /* dev work's
+     background-color: red;*/
+ }
+
+    /* le block DIV qui contient les liens dans la barre supérieure, ce block
+    est de même largeure que le contenu principal de la page */
+    #main_top_barre_contenu {
+        width: 60%;
+        padding: 2px;
+        margin: auto;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 15px;
+        /* dev work's
+        background-color: green;*/
+    }
+
+        /* Le liens image vers le l'acceuil du site */
+        #main_top_barre_contenu img {
+            max-height: 20px;
+            max-width: 24px;
+            padding-right: 3px;
+        }
+
+        /* Les liens vers les autres sections du site */
+        #main_top_barre_contenu a {
+            font-family: 'capsuularegular';
+            font-size: 1.5em;
+            padding-left: 6px;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+            /* Les liens qui possèdent une bordure à gauche */
+            .main_top_bordered {
+                border-left: 1px dotted #423e3e;
+                padding-right: 7px;
+            }
+
+            /* EVENT ===> SURVOL des liens */
+            #main_top_barre_contenu a.main_top_bordered:hover {
+                border-left: 1px dotted #fa8a2c;
+                color: #fa8a2c;
+            }
+
+/* La barre du logo et du menu horizontal du site */
+#main_menu {
+    width: 60%;
+    min-width: 840px;
+    margin-bottom: 5px;
+    border-radius: 2em;
+    box-shadow: 3px 3px 5px #1d1d1d inset, 0px -3px 7px #1d1d1d inset;
+    /* dev work's
+    background-color: red;*/
+}
+
+    /* Le block DIV qui contient le contenu de cette barre, il à la même largeur
+    que le contenu principal du site */
+    #main_menu_contenu {
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+        margin: auto;
+        /* dev work's
+        background-color: green; */
+    }
+
+        /* le menu horizontal */
+        #main_menu_img {
+            background: url("../images/aur1_logo_small.png") no-repeat center;
+            background-size: contain;
+            flex-basis: 25%;
+            height: 105px;
+        }
+
+        #main_menu_contenu ul {
+            flex: 1;
+            margin: 0;
+            display: flex;
+            align-items: stretch;
+        }
+
+        #main_menu_contenu li {
+            flex-basis: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            list-style-type: none;
+            padding-right: 3px;
+            padding-left: 3px;
+            color: black;
+        }
+
+        #main_menu_contenu a {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+            #main_menu_contenu li:hover {
+                /* box-shadow: 2px 0 10px #1d1d1d inset; */
+                cursor: pointer;
+            }
+
+            .menu_effet_bouton {
+                flex: 1;
+                display: none;
+                align-items: flex-end;
+                padding-bottom: 15px;
+            }
+
+                .menu_effet_bouton div {
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 8px;
+                    box-shadow: 3px 3px 8px #1e1e1e inset;
+                }
+
+                /* survol du bandeau pépiniere */
+                .li_pepiniere:hover a span {
+                    color: #ebebeb;
+                    text-shadow: 1px 1px 4px #ebebeb;
+                }
+                    .li_pepiniere:hover div div {
+                        background-color: #ebebeb;
+                    }
+
+                /* survol du bandeau maraichage */
+                .li_maraichage:hover a span {
+                    color: #fafbcd;
+                    text-shadow: 1px 1px 4px #fafbcd;
+                }
+                    .li_maraichage:hover div div {
+                        background-color: #fafbcd;
+                    }
+
+                /* survol du bandeau plantation */
+                .li_plantation:hover a span {
+                    color: #ffffff;
+                    text-shadow: 1px 1px 4px #ffffff;
+                }
+                    .li_plantation:hover div div {
+                        background-color: #ffffff;
+                    }
+
+                /* survol du bandeau polyplanche */
+                .li_polyplanche:hover a span {
+                    color: #ebebeb;
+                    text-shadow: 1px 1px 4px #ebebeb;
+                }
+                    .li_polyplanche:hover div div {
+                        background-color: #ebebeb;
+                    }
+
+
+            .menu_titre {
+                padding-top: 5px;
+                font-family: 'capsuularegular';
+                font-weight: bold;
+                font-size: 1.8em;
+                color: #0f0f0f;
+                text-shadow: 1px 1px 4px #3b3b3b;
+            }
+
+            .bouton_gamme_section {
+                text-align: center;
+                font-family: 'capsuularegular';
+                font-size: 1.3em;
+                margin-bottom: -5px;
+            }
+
+            #main_menu_contenu li a {
+                color: black;
+            }
+
+#main_section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    /* border: 4px solid #eeeeee;*/
+    box-shadow: 5px 5px 10px black,
+                3px 3px 7px #1e1e1e inset;
+    border-radius: 2em 2em 6em 2em;
+    flex-basis: 200px;
+    width: 60%;
+    min-width: 840px;
+    /* dev work's */
+}
+
+#presentation_corps {
+    font-family: 'capsuularegular';
+    width: 100%;
+    padding: 5px 10px 10px 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #626262;
+}
+
+#occasions_section {
+    width: 100%;
+    background: url("../images/aur1_occasions.JPG") no-repeat center;
+    box-shadow: 0px -3px 5px #000000 inset;
+    /* dev work's
+    background-color: green; */
+}
+
+#news_section {
+    width: 100%;
+    background: url("../images/aur1_news.JPG") no-repeat center;
+    box-shadow: 0px -3px 5px #000000 inset;
+    /* dev work's
+    background-color: green; */
+}
+
+#contact_section {
+    width: 100%;
+    background: url("../images/aur1_contact.jpg") no-repeat center;
+    box-shadow: 0px -3px 5px #000000 inset;
+    /* dev work's
+    background-color: green; */
+}
+
+        #main_section_titre {
+            width: 90%;
+            padding-left: 20px;
+            padding-top: 5px;
+            font-family: 'capsuularegular';
+            font-weight: bold;
+            font-size: 2.5em;
+            color: #1d1d1d;
+            text-shadow: 0px 1px 3px #313131;
+            text-transform: uppercase;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: inherit;
+        }
+
+        #main_section_titre_gamme {
+            width: 35%;
+            padding-left: 20px;
+            padding-top: 5px;
+            margin-bottom: 5px;
+            font-family: 'capsuularegular';
+            color: #1d1d1d;
+            text-shadow: 1px 2px 4px #313131;
+            font-weight: bold;
+            font-size: 3em;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 2em 15em 0em 2em;
+        }
+
+            /* le titre et le sous titre de la page */
+            #titre_1 {
+                font-size: 1.5em;
+            }
+
+            .barre_under {
+                width: 100%;
+                height: 7px;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            #sous_titre {
+                font-size: 2.5em;
+                text-transform: uppercase;
+            }
+
+ /* Le contenu de la page pricipale */
+ .main_content {
+     /* dev work's */
+     display: flex;
+     /* flex-direction: column; */
+     justify-content: flex-start;
+     border-radius: 25px;
+     padding: 10px 20px 10px 20px;
+     background: rgba(250, 250, 250, 0.9) url("../images/aur1_logo_flou.png") no-repeat center;
+     background-size: contain;
+     margin-bottom: 5px;
+     box-shadow: 2px 3px 8px #1e1e1e inset, -1px -2px 4px #1e1e1e inset;
+     width: 60%;
+     min-width: 840px;
+ }
+
+ /* Le contenu des autres pages: news, présentation, ... */
+ #autre_content {
+     /* dev work's */
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     background-color: #f7f7f7;
+     box-shadow: 2px 0px 4px #969696,
+                 -2px 0px 4px #969696;
+     width: 60%;
+     min-width: 840px;
+     margin: auto;
+     /* dev work's*/
+     min-height: 600px;
+ }
+
+ /* Le contenu de la page de présentation de la gamme */
+ .gamme_content {
+     /* dev work's */
+     display: flex;
+     justify-content: flex-start;
+     flex-direction: column;
+     border-radius: 25px;
+     padding: 10px 10px 10px 10px;
+     background: rgba(250, 250, 250, 0.9) url("../images/aur1_logo_flou.png") no-repeat center;
+     background-size: contain;
+     margin-bottom: 5px;
+     box-shadow: 2px 3px 8px #1e1e1e inset, -1px -2px 4px #1e1e1e inset;
+     width: 60%;
+     min-width: 840px;
+ }
+    .gamme_trie {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        padding-right: 10px;
+    }
+
+        .gamme_trie a:hover {
+            color: #fa8a2c;
+        }
+
+    .gamme_trie_champ {
+        margin-right: 15px;
+        font-family: 'capsuularegular';
+        font-size: 1.1em;
+        font-style: italic;
+        font-weight: bold;
+        color: #afafaf;
+    }
+
+    .gamme_liens {
+        text-align: center;
+        font-family: 'capsuularegular';
+        font-size: 1.3em;
+        margin: 5px 0px 5px 0px;
+        font-style: italic;
+        font-weight: bold;
+        color: #8c8c8c;
+    }
+
+        .no_choice {
+            font-family: 'capsuularegular';
+            font-size: 1.5em;
+            margin-left: 10px;
+            font-weight: bold;
+            color: #cecece;
+            text-shadow: 1px 2px 3px #c3c3c3;
+            font-style: normal;
+        }
+
+        .choice {
+            font-family: 'capsuularegular';
+            font-size: 1.5em;
+            margin-left: 10px;
+            font-weight: bold;
+            color: #575757;
+            text-shadow: 1px 2px 3px #464646;
+            font-style: normal;
+        }
+
+    .block_gammes {
+        display: flex;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 30px;
+        padding-top: 20px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    .block_gammes_occas {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .block_gammes a:hover div div div:first-child {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: -1px -1px 5px #f0f0f0 inset,
+                    1px 1px 5px #f9f9f9 inset;
+    }
+
+    .block_gammes_occas a:hover div div div:first-child {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: -1px -1px 5px #f0f0f0 inset,
+                    1px 1px 5px #f9f9f9 inset;
+    }
+
+    .block_gammes_liens a:hover div div div:first-child {
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: -1px -1px 5px #f0f0f0 inset,
+                    1px 1px 5px #f9f9f9 inset;
+    }
+
+    .block_gammes_liens {
+        display: flex;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 30px;
+        padding-top: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .gamme_machine_fond {
+            margin: 10px 3px 0px 3px;
+            max-width: 216px;
+            padding: 8px;
+            border-radius: 15px;
+            box-shadow: 2px 2px 4px #303030 inset,
+                        -3px -1px 8px #434343 inset;
+        }
+
+        .gamme_machine_style {
+            background-color: #eaebe6;
+            display:flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: inherit;
+            box-shadow: 2px 2px 4px #303030;
+        }
+
+            .gamme_machine_img {
+                height: 200px;
+                width: 200px;
+                border-bottom-right-radius:inherit;
+                border-bottom-left-radius:inherit;
+                box-shadow: -6px -5px 50px #f0f0f0 inset,
+                            0px 2px 4px #292929 inset;
+            }
+
+
+            .gamme_machine_titre {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                font-family: 'capsuularegular';
+                text-transform: uppercase;
+                font-weight: 900;
+                text-shadow: 1px 1px 2px #404040;
+                font-size: 1.0em;
+                padding-left: 5px;
+                padding-right: 5px;
+                color: #202020;
+                min-height: 2.8em;
+                border-top-right-radius:inherit;
+                border-top-left-radius:inherit;
+                background-color: rgba(255, 255, 255, 0.5);
+                min-width: 190px;
+                max-width: 190px;
+                box-shadow: -3px -1px 20px #f0f0f0 inset,
+                            3px 2px 20px #f9f9f9 inset;
+            }
+
+
+
+    .gamme_img { /* l'imag qui réprésente une gamme lors du détail de cette gamme */
+        max-width: 500px;
+        max-width: 500px;
+    }
+    /* =================================DETAIL GAMME========================= */
+
+.gamme_machine_detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px 10px 10px 10px;
+}
+
+    .gamme_detail_titre {
+        flex-basis: 150px;
+        flex-grow: 1;
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 60px;
+        margin-bottom: 10px;
+        box-shadow: -2px -3px 8px #3c3c3c inset,
+                    2px 3px 4px #3c3c3c inset;
+        border-radius: 15px 15px 0px 0px;
+    }
+
+        .gamme_detail_titre h5 {
+            display: flex;
+            align-items: center;
+            height: 2.5em;
+            font-family: 'capsuularegular';
+            text-transform: uppercase;
+            font-weight: 900;
+            text-shadow: 1px 1px 2px #404040;
+            font-size: 1.8em;
+            padding-left: 15px;
+            padding-right: 15px;
+            align-self: flex-end;
+            margin: 0;
+            background-color: #eaebe6;
+            border-radius: 10px 10px 0px 0px;
+            box-shadow: -2px -3px 8px #3c3c3c;
+        }
+
+    .gamme_detail_block {
+        display: flex;
+    }
+
+        .gamme_detail_corps {
+            flex: 5;
+            padding-right: 20px;
+        }
+
+        .gamme_detail_marge {
+            border-top-left-radius: 20px;
+            background: linear-gradient(100deg, #c0c0c0 10%, rgba(255,255,255,0.0) 18%);
+            padding-left: 5px;
+            flex: 2;
+            margin-right: 10px;
+        }
+
+            .gamme_detail_culture_block {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+                .gamme_detail_culture {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 45%;
+                }
+
+                .gamme_detail_culture:hover h6 {
+                    color: #242424;
+                    text-shadow: 1px 1px 2px #4a4a4a;
+                }
+
+                .gamme_detail_culture:hover .gamme_detail_culture_img {
+                    border: 3px solid #191919;
+                    box-shadow: 2px 3px 3px #3c3c3c;
+                }
+
+                    .gamme_detail_culture_img {
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                        border: 3px solid rgba(0, 0, 0, 0.5);
+                        box-shadow: 2px 3px 8px #3c3c3c;
+                    }
+
+                    .gamme_detail_culture h6 {
+                        margin-top: 2px;
+                        margin-bottom: 10px;
+                        font-family: 'capsuularegular';
+                        color: #505050;
+                        font-weight: bold;
+                        text-shadow: 2px 2px 4px #878787;
+                        font-size: 1.1em;
+                    }
+
+                    .gamme_detail_doc {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                    }
+
+                    .gamme_detail_occassions {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                    }
+
+                        .gamme_detail_doc_nom {
+                            font-family: 'capsuularegular';
+                            color: #a1a1a1;
+                            font-weight: bold;
+                            font-style: italic;
+                            padding-right: 10px;
+                            align-self: flex-end;
+                            font-size: 1.1em;
+                        }
+
+                        .occas_lien_nom {
+                            font-family: 'capsuularegular';
+                            color: #6c6c6c;
+                            font-weight: bold;
+                            white-space: nowrap;
+                            overflow: hidden;
+                            -o-text-overflow: ellipsis; /* pour Opera 9 */
+                            text-overflow: ellipsis;
+                            font-style: italic;
+                            padding-right: 10px;
+                            font-size: 1.1em;
+                        }
+
+                        .gamme_detail_doc_lien {
+                            display: flex;
+                            justify-content: flex-start;
+                            padding-left: 30px;
+                            align-items: center;
+                        }
+
+                        .gamme_detail_occasions_lien {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            padding-left: 30px;
+                            align-items: center;
+                        }
+
+                            .occas_lien_icone {
+                                background: url('../images/icone_occas.png') no-repeat bottom;
+                                background-size: contain;
+                                min-width: 40px;
+                                min-height: 40px;
+                                margin-right: 7px;
+                                border-radius: 10px;
+                                box-shadow: 1px 2px 4px #6a6a6a;
+                            }
+
+                            .gamme_detail_doc_lien img {
+                                width: 1.5em;
+                                height: 1.5em;
+                                margin-right: 5px;
+                            }
+
+                            .gamme_detail_doc_lien a {
+                                font-family: 'capsuularegular';
+                                color: #6f6f6f;
+                                font-weight: bold;
+                                font-size: 1.2em;
+                            }
+
+                            .gamme_detail_doc_lien span, .occas_lien_date {
+                                flex-grow: 1;
+                                text-align: right;
+                                font-family: 'capsuularegular';
+                                color: #afafaf;
+                                font-size: 1.0em;
+                                font-style: italic;
+                                padding-right: 10px;
+                            }
+
+        .gamme_detail_texte {
+            font-family: 'capsuularegular';
+            text-align: justify;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #626262;
+        }
+
+        .gamme_detail_texte_occas {
+            font-family: 'capsuularegular';
+            text-align: justify;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #626262;
+        }
+
+
+        .gamme_detail_caracteristiques {
+            font-family: 'capsuularegular';
+            margin-top: 10px;
+        }
+
+            .gamme_detail_caracteristiques tr {
+                margin: 0;
+            }
+
+            .champ_carac {
+                font-size: 1.1em;
+                color : #3c3c3c;
+                font-style: italic;
+                margin-right: 10px;
+            }
+
+
+
+            .donnees_carac {
+                font-size: 1.2em;
+                text-shadow: 1px 1px 5px #353535;
+                font-weight: bold;
+                color: #464646;
+            }
+
+        .gamme_detail_marque {
+            width: 20%;
+            margin: auto;
+        }
+
+                .gamme_detail_marque img {
+                    max-width: 100%;
+                }
+
+        .gamme_detail_modeles {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .gamme_detail_modele {
+            border-top-left-radius: 40px;
+            background: linear-gradient(to right bottom, #dbdbdb 15%, rgba(255,255,255,0.0) 35%);
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+            .gamme_detail_modele_nom {
+                width: 100%;
+                padding-top: 3px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                font-family: 'capsuularegular';
+                text-transform: uppercase;
+                font-size: 1.6em;
+                font-weight: bold;
+                color: #424242;
+            }
+
+                .gamme_detail_modele_nom span {
+                    flex-grow: 1;
+                }
+
+                .gamme_detail_modele_nom a, .gamme_detail_modele_nom div {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                }
+
+                .gamme_detail_modele_nom img {
+                    height: 2em;
+                }
+
+
+        .occasion_detail_annee {
+            display: flex;
+            justify-content: flex-end;
+            font-family: 'capsuularegular';
+        }
+
+    .contact_coordonnees {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .contact_localisation {
+        display: flex;
+        width: 80%;
+    }
+
+        .contact_localisation iframe {
+            flex: 2;
+        }
+
+        .contact_localisation div {
+            padding: 10px;
+            flex: 1;
+            font-family: 'capsuularegular';
+            font-weight: bold;
+            color: #e54f4f;
+            font-size: 0.9em;
+        }
+    /* =============================FIN DETAIL GAMME========================= */
+
+    /* ==================== les titre de format h3 ========================== */
+    h3 {
+        width: 90%;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .h3_partie_sup {
+            display: flex;
+        }
+
+            .h3_partie_gauche {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+                align-items: flex-start;
+                flex-basis: 2em;
+                margin-bottom: 0.2em;
+            }
+
+                .h3_1 {
+                    flex-basis: 0.4em;
+                    margin-bottom: 0.2em;
+                    width: 33%;
+                    border-radius: 0.4em;
+                    box-shadow: 1px 1px 4px #373737 inset;
+                }
+                .h3_2 {
+                    flex-basis: 0.4em;
+                    margin-bottom: 0.2em;
+                    width: 66%;
+                    border-radius: 0.4em;
+                    box-shadow: 1px 1px 4px #373737 inset;
+                }
+                .h3_3 {
+                    flex-basis: 0.4em;
+                    width: 99%;
+                    border-radius: 0.4em;
+                    box-shadow: 1px 1px 4px #373737 inset;
+                }
+
+            .h3_titre {
+                display: flex;
+                align-items: center;
+                padding-left: 5px;
+                font-family: 'capsuularegular';
+                font-weight: bold;
+                text-shadow: 2px 2px 4px #878787;
+                font-size: 1.4em;
+            }
+
+        .h3_ligne_bottom {
+            flex-basis: 0.4em;
+            width: 99%;
+            border-radius: 0.4em;
+            box-shadow: 1px 1px 4px #373737 inset;
+        }
+    /* ==================================METEO=============================== */
+
+
+    /* ==================== les titre de format h4 ========================== */
+    h4 {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+        .h4_partie_gauche {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            min-width: 25px;
+            max-width: 25px;
+            height: 0.4em;
+            border-radius: 0.4em;
+            box-shadow: 1px 1px 4px #373737 inset;
+        }
+
+        .h4_titre {
+            display: flex;
+            align-items: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            font-family: 'capsuularegular';
+            color: #505050;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px #878787;
+            font-size: 1.4em;
+        }
+
+        .h4_partie_droite {
+            flex: 1 0 auto;
+            height: 0.4em;
+            border-radius: 0.4em;
+            box-shadow: 1px 1px 4px #373737 inset;
+        }
+
+    /* ==================================METEO=============================== */
+
+        /* le block météo */
+        #main_meteo {
+            display: flex;
+            flex: 3;
+            flex-direction: column;
+            font-family: 'capsuularegular';
+            margin-bottom: 20px;
+            margin-left: 10px;
+            /* dev work's*/
+        }
+
+            .meteo_champ {
+                font-size: 1em;
+                color : #4c4c4c;
+                font-style: italic;
+                margin-right: 5px;
+            }
+
+        /* le premier block qui représente le jour actuel */
+        #jour1 {
+            display: flex;
+            margin-bottom: 6px;
+            background-color: #e2e8ea;
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0 0 40px #627e8a inset,
+                        -1px -2px 75px #475c65 inset,
+                        0 0 6px #494949;
+        }
+
+            #jour1_gauche {
+                flex-basis: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+            }
+                #jour1_temp {
+                    color: #464646;
+                    font-size: 2.8em;
+                    text-shadow: 1px 1px 5px #353535;
+                    flex-grow: 1;
+                    padding-top: 0.5em;
+                    padding-right: 1em;
+                    text-align: right;
+                }
+
+                    .champ_donnee {
+                        font-size: 1.2em;
+                        text-shadow: 1px 1px 5px #353535;
+                        font-weight: bold;
+                        color: #464646;
+                    }
+
+                #jour1_desc {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: flex-start;
+                    padding-left: 3px;
+                    padding-bottom: 3px;
+                }
+
+                    #jour1_desc p {
+                        margin: 0;
+                    }
+
+            #jour1_droite {
+                flex-basis: 50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+            }
+
+                 #jour1_date {
+                     font-size: 1.1em;
+                     font-weight: bold;
+                     color: #464646;
+                     margin: 0;
+                     text-align: right;
+                     padding-top: 3px;
+                     padding-right: 3px;
+                 }
+
+                 #jour1_droite div {
+                     display: flex;
+                     justify-content: flex-end;
+                     padding-right: 1em;
+                     align-items: center;
+                     flex-grow: 1;
+                 }
+
+                    #jour1_icon {
+                        max-width: 119px;
+                        max-height: 119px;
+                    }
+
+        /* le second bloc, qui représente les deux jours suivants */
+        #jour_suivants {
+            display: flex;
+        }
+
+            .jour_next {
+                display: flex;
+                flex-grow: 1;
+                flex-direction: column;
+                justify-content: flex-start;
+                background-color: #eff2f3;
+                border-radius: 10px;
+                padding: 5px;
+                box-shadow: 0 0 40px #8ba3ad inset,
+                            -1px -2px 75px #7894a0 inset,
+                            0 0 6px #494949;
+            }
+
+            #jour2 {
+                margin-right : 6px;
+            }
+
+                .jour_next h5 {
+                    font-size: 1.1em;
+                    color: #464646;
+                    font-weight: bold;
+                    padding-left: 7px;
+                    margin: 0;
+                }
+
+                .ico_temp {
+                    display: flex;
+                    justify-content: flex-start;
+                }
+
+                    .ico_temp_ico {
+                        flex: 4;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+
+                        #jour2_icon, #jour3_icon {
+                            max-width: 71px;
+                            max-height: 71px;
+                        }
+
+                    .ico_temp_temp {
+                        flex: 3;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: flex-start;
+                        padding-left: 2px;
+                    }
+
+                        .ico_temp_temp p {
+                            margin: 0;
+                        }
+
+                .jour_next_desc {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-end;
+                    align-items: flex-start;
+                    padding-left: 3px;
+                    padding-bottom: 3px;
+                }
+
+                    .jour_next_desc p {
+                        margin: 0;
+                    }
+
+
+
+
+    /* =============================FIN METEO================================ */
+
+
+    /* =============================LES NEWS================================= */
+        /* le block actualités */
+        #main_news {
+            display: flex;
+            flex: 7;
+            flex-direction: column;
+            justify-content: flex-start;
+            font-family: 'capsuularegular';
+            /* dev work's
+            background-color: yellow;*/
+        }
+
+            /* chaque block qui contient une news */
+            .main_news_article {
+                background-color: #dddddd;
+                margin-top: 3px;
+                margin-bottom: 13px;
+                padding: 5px;
+                box-shadow: 0 0 80px #ededed inset,
+                            -1px -2px 120px #f8f8f8 inset,
+                            0 0 6px #494949;
+                border-radius: 5px 15px 5px 15px;
+                display: flex;
+                flex-direction: column;
+            }
+
+                /* le block contenant la date, titre, et texte */
+                .main_news_style_contenu {
+                    flex-grow: 1;
+                }
+
+                    .main_news_date {
+                        font-size: 1em;
+                        color: #a0a0a0;
+                        font-style: italic;
+                        font-weight: bold;
+                        margin-right: 15px;
+                    }
+
+                        .main_news_mois {
+                            color: #787878;
+                            text-transform: capitalize;
+                        }
+
+                    .main_news_titre {
+                        font-size: 1.3em;
+                        color: #535353;
+                        font-weight: bold;
+                        margin-bottom: 0;
+                    }
+
+                        .news_underligne {
+                            margin-top: 0;
+                            height: 0.2em;
+                            width: 80%;
+                            border-radius: 0.2em;
+                            background: linear-gradient(to right, #535353 20% , #a0a0a0 45%, rgba(0, 0, 0, 0.0) 85%);
+                        }
+
+                        .news_underligne_light {
+                            margin-top: 0;
+                            height: 0.2em;
+                            width: 96%;
+                            border-radius: 0.2em;
+                            background: linear-gradient(to right, rgba(0, 0, 0, 0.0) 30%, #d6d6d6 58%, #acacac 90%);
+                        }
+
+                        .news_underligne_reverse {
+                            margin-top: 0;
+                            height: 0.2em;
+                            width: 100%;
+                            border-radius: 0.2em;
+                            background: linear-gradient(to left, rgba(0, 0, 0, 0.0) 15% , #a0a0a0 50%, rgba(0, 0, 0, 0.0) 85%);
+                        }
+
+                    .main_news_texte {
+                        padding: 5px 10px 10px 5px;
+                        font-size: 1.1em;
+                        font-weight: bold;
+                        color: #626262;
+                    }
+
+                        .main_news_texte p {
+                            text-align: justify;
+                        }
+
+                .news_list_img {
+                    padding: 10px 10px 10px 5px;
+                    display: flex;
+                    justify-content: flex-end;
+                    flex-wrap: wrap;
+                }
+
+                    .news_list_img a {
+                        border-radius: 1em;
+                        align-self: flex-start;
+                        box-shadow: -2px -1px 8px #3e3e3e inset,
+                                    1px 2px 4px #272727 inset;
+                        width: 80px;
+                        height: 80px;
+                        margin-right: 6px;
+                        margin-bottom: 6px;
+                    }
+
+
+ /* le formulaire de contact */
+ #formulaire_contact {
+     display: flex;
+     flex-direction: column;
+     align-items: flex-start;
+ }
+
+ .champ_carac_form {
+     font-size: 1.1em;
+     color : #717171;
+     font-style: italic;
+     margin-right: 10px;
+ }
+
+ .form_formulaire {
+     display: flex;
+     width: 50%;
+     margin-top: 10px;
+     margin-bottom: 4px;
+     margin-left: 5%;
+ }
+
+     .form_texte {
+         display: flex;
+         flex-direction: column;
+         justify-content: flex-start;
+         flex-grow: 1;
+     }
+
+         .form_texte span {
+             width: 60%;
+             font-family: 'capsuularegular';
+             font-size: 0.9em;
+             font-style: italic;
+             color: #e0594a;
+             visibility: hidden;
+         }
+
+     .form_texte input[type="text"] {
+         width: 60%;
+         border-radius: 5px;
+         font-family: 'capsuularegular';
+         font-weight: bold;
+         font-size: 1.1em;
+         outline: none;
+         border: 2px inset #b6bab0;
+     }
+
+     .form_texte textarea {
+         width: 90%;
+         height: 200px;
+         outline: none;
+         border-radius: 5px;
+         font-family: 'capsuularegular';
+         font-weight: bold;
+         font-size: 1.1em;
+         border: 2px inset #b6bab0;
+         resize: none;
+     }
+
+     .form_valid {
+         flex-basis: 5px;
+         border-radius: 2px;
+         margin-right: 10px;
+     }
+
+        .active {
+            box-shadow: 1px 2px 3px #666666 inset;
+        }
+
+     #contact_bouton{
+         width: 90%;
+         border-radius: 5px;
+         outline: none;
+         border: 2px outset #b6bab0;
+     }
+
+         #contact_bouton:hover {
+             cursor: pointer;
+             border-color: #bef773;
+         }
+
+    #reponse_mail {
+        visibility: hidden;
+    }
+
+        #message_mail {
+            padding-left: 20px;
+        }
+
+ /* la banniere en bas de page */
+ footer {
+     width: 60%;
+     min-width: 840px;
+     padding-top: 15px;
+     padding-bottom: 15px;
+ }
+
+    /* le block contenant le pied de page et la largeur du site web */
+    #main_pied_page {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin: auto;
+        /* dev work's
+        background-color: yellow; */
+    }
+
+        #footer_contact {
+            background: rgba(250, 250, 250, 0.9);
+            flex-grow: 1;
+            display: flex;
+            padding-left: 10px;
+            padding-top: 5px;
+            border-radius: 6px;
+            box-shadow: 2px 3px 8px #1e1e1e inset, -1px -2px 4px #1e1e1e inset;
+
+        }
+
+            #footer_contact img {
+                align-self: flex-start;
+            }
+
+        /* le block de gauche - contact */
+        #footer_contact_texte {
+            display: flex;
+            flex-grow: 1;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 13px;
+            font-family: 'capsuularegular';
+            letter-spacing: 1px;
+            color: #535353;
+            font-weight: bold;
+        }
+
+        /* le block du centre - interlocuteur */
+        #footer_interlocuteur {
+            background: rgba(250, 250, 250, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 13px;
+            font-family: 'capsuularegular';
+            letter-spacing: 1px;
+            color: #535353;
+            border-radius: 6px;
+            box-shadow: 2px 3px 8px #1e1e1e inset, -1px -2px 4px #1e1e1e inset;
+            font-weight: bold;
+            margin: 0px 10px 0px 10px;
+        }
+
+         #footer_interlocuteur table {
+         }
+
+         #footer_interlocuteur td {
+         }
+
+        /* le block de droite - plan du site */
+        #footer_plan_site {
+            background: rgba(250, 250, 250, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding: 13px;
+            font-family: 'capsuularegular';
+            letter-spacing: 1px;
+            color: #535353;
+            border-radius: 6px;
+            box-shadow: 2px 3px 8px #1e1e1e inset, -1px -2px 4px #1e1e1e inset;
+            font-weight: bold;
+        }
+
+            #footer_plan_site td {
+                width: 150px;
+            }
+
+            #footer_plan_site a {
+                color: #535353;
+            }
+
+            #footer_plan_site a:hover {
+                text-decoration: underline;
+            }
+
+
+        .footer_italic {
+            font-style: italic;
+        }
+
+        .footer_name {
+            font-size: 1.2em;
+            margin-left: 5px;
+        }
+
+        .footer_puce { /* cercle */
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background-color: #535353;
+            margin: 0px 5px 0px 5px;
+        }
+
+
+/* ============================================================= FIN Page n°2 */

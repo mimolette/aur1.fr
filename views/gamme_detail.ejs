@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- import des polices -->
+        <link rel="stylesheet" href="../../../stylesheets/polices_style.css" />
+        <!-- style général -->
+        <link rel="stylesheet" href="../../../stylesheets/main_style.css" />
+        <!-- style lightbox -->
+        <link rel="stylesheet" href="../../../javascripts/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+
+        <!--<link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
+        <script src="http://vjs.zencdn.net/4.12/video.js"></script>-->
+        <title>Aur1</title>
+    </head>
+
+    <body style="
+        background : url('../../../<%= choice.imgbandeau %>') no-repeat fixed center;
+        background-size: cover;
+    ">
+
+        <!-- La barre horizontale supérieure de la fenêtre, elle contient
+        quelques liens vers les autres sections et peut etre un fonction de
+        recherche de machine -->
+        <div id="main_top_barre">
+            <div id="main_top_barre_contenu">
+                <a href="../../../../" class="main_return"><img src="../../../images/Retour_acceuil.svg"/></a>
+                <a href="/section/<%= choice._id %>" class="main_top_bordered" style="order : <%= choice.ordre %>"><%= choice.nom %></a>
+                <% for (var i = 0; i < no_choice.length; i++) { %>
+                    <a href="/section/<%= no_choice[i]._id %>/gamme" class="main_top_bordered" style="order : <%= no_choice[i].ordre %>"><%= no_choice[i].nom %></a>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Le bandeau du menu et du logo de l'entreprise -->
+        <div id="main_menu" style="
+        background: -webkit-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        background: -o-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        background: -moz-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        background: linear-gradient(to right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../../../images/path4730.png');
+        ">
+            <div id="main_menu_contenu">
+                <a href="/section/<%= choice._id %>" id="main_menu_img"></a>
+                <ul>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/presentation">
+                            <span class="menu_titre">Présentation</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>">
+                            <span class="menu_titre">Les Actualités</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/gamme">
+                            <span class="menu_titre">La Gamme</span>
+                            <span class="bouton_gamme_section"><%= choice.nom %></span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/occasions">
+                            <span class="menu_titre">Les Occasions</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/contact">
+                            <span class="menu_titre">Contact</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- le bandeau qui représente la section choisi -->
+        <div id="main_section" style="
+        background: url('../../../images/path_hexagone.png') repeat, linear-gradient(240deg, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%), url('../../../images/<%= choice.img2 %>') no-repeat right;
+        background-size: auto, auto, contain;
+        ">
+            <div id="main_section_titre" ><%= choice.nom %></div>
+
+        </div>
+
+        <!-- Contenu de la page de présentation de la gamme -->
+        <div class="gamme_content">
+            <div class="gamme_machine_detail">
+                <div class="gamme_detail_titre" style="
+                background : url('../../../images/path_hexagone.png') repeat, linear-gradient(60deg, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%), url('../../../images/Gammes/<%= machine.repertoire %>/originaux/gamme.jpg') no-repeat left;
+                background-size: auto, contain;
+                ">
+                    <h5><%= machine.nom_gamme %></h5>
+                </div>
+
+                <!-- block qui contient le corps et la marge droite -->
+                <div class="gamme_detail_block">
+                    <div class="gamme_detail_corps">
+                        <h4>
+                            <div class="h4_partie_gauche" style="
+                            background-color : <%= choice.couleur %>;
+                            "></div>
+                            <span class="h4_titre">Description</span>
+                            <div class="h4_partie_droite" style="
+                            background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                            "></div>
+                        </h4>
+                        <div class="gamme_detail_texte"> <!-- Description de la gamme -->
+                            <% for (var d = 0 ; d < machine.description.length; d++) { %>
+                                <% if (~machine.description[d].indexOf('li/')) { %>
+                                    <% if (~machine.description[d].indexOf('start/')) { %>
+                                        <ul><li><%= machine.description[d].substring(9) %></li>
+                                    <% } else if (~machine.description[d].indexOf('end/')) { %>
+                                        <li><%= machine.description[d].substring(7) %></li></ul>
+                                    <% } else { %>
+                                        <li><%= machine.description[d].substring(3) %></li>
+                                    <% } %>
+                                <% } else { %>
+                                    <p><%= machine.description[d] %></p>
+                                <% } %>
+                            <% } %>
+                        </div>
+
+                        <% if (machine.modele.length > 1) { %>
+                            <h4>
+                                <div class="h4_partie_gauche" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                                <span class="h4_titre">Modèles</span>
+                                <div class="h4_partie_droite" style="
+                                background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                                "></div>
+                            </h4>
+                            <div class="gamme_detail_modeles">
+                            <% for (var m=0; m < machine.modele.length; m++) { %>
+
+                                <div class="gamme_detail_modele" style="order: <%= machine.modele[m].ordre %>">
+                                <!-- ========================= LA GAMME POSSEDE PLUSISEURS MODELES =================== -->
+                                <% var nom_groupe = machine.modele[m].nom_modele %>
+                                <div class="news_underligne_reverse"></div>
+                                <div class="gamme_detail_modele_nom">
+                                    <span><%= machine.modele[m].nom_modele %></span>
+                                    <% if (machine.modele[m].marque.lien_web == "#") { %>
+                                        <div>
+                                            <img src='../../../images/Marques/<%= machine.modele[m].marque.logo %>'/>
+                                        </div>
+                                    <% } else { %>
+                                        <a href="<%= machine.modele[m].marque.lien_web %>" target="_blank">
+                                            <img src='../../../images/Marques/<%= machine.modele[m].marque.logo %>'/>
+                                        </a>
+                                    <% } %>
+                                </div>
+                                <div class="news_underligne_reverse"></div>
+                                <!-- commentaires -->
+                                <% if (machine.modele[m].commentaires.length) { %>
+                                    <div class="gamme_detail_texte">
+                                    <% for (var c = 0; c < machine.modele[m].commentaires.length; c++) { %>
+                                        <% if (~machine.modele[m].commentaires[c].indexOf('li/')) { %>
+                                            <% if (~machine.modele[m].commentaires[c].indexOf('start/')) { %>
+                                                <ul><li><%= machine.modele[m].commentaires[c].substring(9) %></li>
+                                            <% } else if (~machine.modele[m].commentaires[c].indexOf('end/')) { %>
+                                                <li><%= machine.modele[m].commentaires[c].substring(7) %></li></ul>
+                                            <% } else { %>
+                                                <li><%= machine.modele[m].commentaires[c].substring(3) %></li>
+                                            <% } %>
+                                        <% } else { %>
+                                            <p><%= machine.modele[m].commentaires[c] %></p>
+                                        <% } %>
+                                    <% } %>
+                                    </div>
+                                <% } %>
+
+                                <!-- caracteristiques -->
+                                <% if (machine.modele[m].caracteristiques.length) { %>
+                                    <table class="gamme_detail_caracteristiques">
+                                        <% for (var c = 0; c < machine.modele[m].caracteristiques.length; c++) { %>
+                                            <tr>
+                                                <td class="champ_carac"><%= machine.modele[m].caracteristiques[c].split('#')[0] %>:</td>
+                                                <td class="donnees_carac"><%= machine.modele[m].caracteristiques[c].split('#')[1] %></td>
+                                            </tr>
+                                        <% } %>
+                                    </table>
+                                <% } %>
+
+                                <!-- images et video -->
+                                <% if (machine.modele[m].img.length || machine.modele[m].video.length) { %>
+                                    <div class="news_underligne_light"></div>
+                                    <div class="news_list_img">
+                                        <% if (machine.modele[m].img.length) { %>
+                                            <% for (var i = 0; i < machine.modele[m].img.length; i++) { %>
+                                                <a href="../../../images/Gammes/<%= machine.repertoire %>/originaux/<%= machine.modele[m].img[i] %>" class="html5lightbox" data-group="<%= nom_groupe %>" style="
+                                                background: url('../../../images/Gammes/<%= machine.repertoire %>/gabarits/tn_<%= machine.modele[m].img[i] %>') no-repeat center;
+                                                background-size: contain;
+                                                "></a>
+                                                <!--<a class="grouped_elements" rel="<%= nom_groupe %>" href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[m].img[i] %>"><img src="../../../images/Gammes/<%= machine.repertoire %>/gabarits/tn_<%= machine.modele[m].img[i] %>" alt=""/></a>-->
+                                            <% } %>
+                                        <% } %>
+
+                                        <% if (machine.modele[m].video.length) { %>
+                                            <% for (var v = 0; v < machine.modele[m].video.length; v++) { %>
+                                                <a href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[m].video[v] %>.mp4" class="html5lightbox" data-group="<%= nom_groupe %>" data-width="720" data-height="480" style="
+                                                background: url('../../../images/Gammes/<%= machine.repertoire %>/gabarits/tn_<%= machine.modele[m].video[v] %>.jpg') no-repeat center;
+                                                background-size: contain;
+                                                "></a>
+                                            <% } %>
+                                        <% } %>
+                                    </div>
+                                <% } %>
+                                </div>
+
+                            <% } %>
+                            </div>
+                        <% } else { %>
+                            <!-- ========================= LA GAMME NE POSSEDE QU'UN MODELE =================== -->
+
+                                <!-- commentaires -->
+                                <% if (machine.modele[0].commentaires.length) { %>
+                                    <div class="gamme_detail_texte">
+                                    <% for (var c = 0; c < machine.modele[0].commentaires.length; c++) { %>
+                                        <% if (~machine.modele[0].commentaires[c].indexOf('li/')) { %>
+                                            <% if (~machine.modele[0].commentaires[c].indexOf('start/')) { %>
+                                                <ul><li><%= machine.modele[0].commentaires[c].substring(9) %></li>
+                                            <% } else if (~machine.modele[0].commentaires[c].indexOf('end/')) { %>
+                                                <li><%= machine.modele[0].commentaires[c].substring(7) %></li></ul>
+                                            <% } else { %>
+                                                <li><%= machine.modele[0].commentaires[c].substring(3) %></li>
+                                            <% } %>
+                                        <% } else { %>
+                                            <p><%= machine.modele[0].commentaires[c] %></p>
+                                        <% } %>
+                                    <% } %>
+                                    </div>
+                                <% } %>
+
+                                <!-- caracteristiques -->
+                                <% if (machine.modele[0].caracteristiques.length) { %>
+                                    <table class="gamme_detail_caracteristiques">
+                                        <% for (var c = 0; c < machine.modele[0].caracteristiques.length; c++) { %>
+                                            <tr>
+                                                <td class="champ_carac"><%= machine.modele[0].caracteristiques[c].split('#')[0] %>:</td>
+                                                <td class="donnees_carac"><%= machine.modele[0].caracteristiques[c].split('#')[1] %></td>
+                                            </tr>
+                                        <% } %>
+                                    </table>
+                                <% } %>
+
+                                <!-- marque -->
+                                <% if (machine.modele[0].marque.lien_web == "#") { %>
+                                    <div class="gamme_detail_marque"><!-- marque de la gamme -->
+                                        <div><img src="../../../images/Marques/<%= machine.modele[0].marque.logo %>" alt="<%= machine.modele[0].marque.nom %>"/></div>
+                                    </div>
+                                <% } else { %>
+                                    <div class="gamme_detail_marque"><!-- marque de la gamme -->
+                                        <a href="<%= machine.modele[0].marque.lien_web %>" target="_blank"><img src="../../../images/Marques/<%= machine.modele[0].marque.logo %>" alt="<%= machine.modele[0].marque.nom %>"/></a>
+                                    </div>
+                                <% } %>
+
+
+                                <!-- images et video -->
+                                <% if (machine.modele[0].img.length || machine.modele[0].video.length) { %>
+                                    <div class="news_underligne_light"></div>
+                                    <div class="news_list_img">
+                                        <% if (machine.modele[0].img.length) { %>
+                                            <% for (var i = 0; i < machine.modele[0].img.length; i++) { %>
+                                                <a href="../../../images/Gammes/<%= machine.repertoire %>/originaux/<%= machine.modele[0].img[i] %>" class="html5lightbox" data-group="<%= nom_groupe %>" style="
+                                                background: url('../../../images/Gammes/<%= machine.repertoire %>/gabarits/tn_<%= machine.modele[0].img[i] %>') no-repeat center;
+                                                background-size: contain;
+                                                "></a>
+                                                <!--<a class="grouped_elements" rel="<%= nom_groupe %>" href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[0].img[i] %>"><img src="../../../images/Gammes/<%= machine.repertoire %>/gabarits/tn_<%= machine.modele[0].img[i] %>" alt=""/></a>-->
+                                            <% } %>
+                                        <% } %>
+
+                                        <% if (machine.modele[0].video.length) { %>
+                                            <% for (var v = 0; v < machine.modele[0].video.length; v++) { %>
+                                                <a href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[0].video[v] %>.mp4" class="html5lightbox" data-group="<%= nom_groupe %>" data-width="720" data-height="480" style="
+                                                background: url('../../../images/Gammes/<%= machine.repertoire %>/gabarits/tn_<%= machine.modele[0].video[v] %>.jpg') no-repeat center;
+                                                background-size: contain;
+                                                "></a>
+                                            <% } %>
+                                        <% } %>
+                                    </div>
+                                <% } %>
+
+
+
+
+                        <% } %>
+
+
+                    </div>
+                    <div class="gamme_detail_marge">
+                        <div><!-- cultures pour lesquelles la gamme peux s'appliquer -->
+                            <h4>
+                                <div class="h4_partie_gauche" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                                <span class="h4_titre">Cultures</span>
+                                <div class="h4_partie_droite" style="
+                                background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                                "></div>
+                            </h4>
+                            <div class="gamme_detail_culture_block">
+                                <% for (var c = 0 ; c < machine.culture.length; c++) { %>
+                                    <a class="gamme_detail_culture" href="/section/<%= choice._id %>/cultures/<%= machine.culture[c]._id %>">
+                                        <div class="gamme_detail_culture_img" style="
+                                        background : url('../../../images/Cultures/<%= machine.culture[c].img %>');
+                                        background-size: contain;
+                                        "></div>
+
+                                        <h6><%= machine.culture[c].nom %></h6>
+                                    </a>
+                                <% } %>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <h4>
+                                <div class="h4_partie_gauche" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                                <span class="h4_titre">Documentation</span>
+                                <div class="h4_partie_droite" style="
+                                background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                                "></div>
+                            </h4>
+                            <% if (machine.documentation.length) { %>
+                                <div class="gamme_detail_doc"><!-- documentation de la gamme -->
+                                <% for (var d = 0 ; d < machine.documentation.length; d++) { %>
+                                    <div class="gamme_detail_doc_lien">
+                                        <img src="../../../images/pdf-icon.png"/>
+                                        <a href="../../../images/Gammes/<%= machine.documentation[d] %>" target="_blank"><%= machine.documentation[d].slice(0, -4) %></a>
+                                        <span>(.pdf)</span>
+                                    </div>
+
+                                <% } %>
+                                <% if (machine.modele.length > 1) { %>
+                                    <% for (var m=0; m < machine.modele.length; m++) { %>
+                                        <!--  LA GAMME POSSEDE PLUSISEURS MODELES -->
+                                        <% if (machine.modele[m].documentation.length) { %>
+                                            <div class="gamme_detail_doc_nom"><%= machine.modele[m].nom_modele %></div>
+                                            <div class="news_underligne_reverse"></div>
+                                            <% for (var d = 0; d < machine.modele[m].documentation.length; d++) { %>
+
+                                                <div class="gamme_detail_doc_lien">
+                                                    <img src="../../../images/pdf-icon.png"/>
+                                                    <a href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[m].documentation[d] %>"><%= machine.modele[m].documentation[d].slice(0, -4) %></a>
+                                                    <span>(.pdf)</span>
+                                                </div>
+
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                <% } else { %>
+                                    <% if (machine.modele[0].documentation.length) { %>
+                                        <% for (var d = 0; d < machine.modele[0].documentation.length; d++) { %>
+
+                                            <div class="gamme_detail_doc_lien">
+                                                <img src="../../../images/pdf-icon.png"/>
+                                                <a href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[0].documentation[d] %>" target="_blank"><%= machine.modele[0].documentation[d].slice(0, -4) %></a>
+                                                <span>(.pdf)</span>
+                                            </div>
+
+                                        <% } %>
+                                    <% } %>
+                                <% } %>
+                                </div>
+                            <% } else { %>
+                                <% if (machine.modele.length > 1) { %>
+                                    <div class="gamme_detail_doc"><!-- documentation de la gamme -->
+                                    <% for (var m=0; m < machine.modele.length; m++) { %>
+                                        <!--  LA GAMME POSSEDE PLUSISEURS MODELES -->
+                                        <% if (machine.modele[m].documentation.length) { %>
+                                            <div class="gamme_detail_doc_nom"><%= machine.modele[m].nom_modele %></div>
+                                            <div class="news_underligne_reverse"></div>
+                                            <% for (var d = 0; d < machine.modele[m].documentation.length; d++) { %>
+
+                                                <div class="gamme_detail_doc_lien">
+                                                    <img src="../../../images/pdf-icon.png"/>
+                                                    <a href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[m].documentation[d] %>" target="_blank"><%= machine.modele[m].documentation[d].slice(0, -4) %></a>
+                                                    <span>(.pdf)</span>
+                                                </div>
+
+                                            <% } %>
+                                        <% } %>
+                                    <% } %>
+                                    </div>
+                                <% } else { %>
+                                    <% if (machine.modele[0].documentation.length) { %>
+                                        <div class="gamme_detail_doc"><!-- documentation de la gamme -->
+                                        <% for (var d = 0; d < machine.modele[0].documentation.length; d++) { %>
+
+                                            <div class="gamme_detail_doc_lien">
+                                                <img src="../../../images/pdf-icon.png"/>
+                                                <a href="../../../images/Gammes/<%= machine.repertoire %>/<%= machine.modele[0].documentation[d] %>" target="_blank"><%= machine.modele[0].documentation[d].slice(0, -4) %></a>
+                                                <span>(.pdf)</span>
+                                            </div>
+
+                                        <% } %>
+                                        </div>
+                                    <% } %>
+                                <% } %>
+                            <% } %>
+
+
+                            <!-- liste des machines d'occasions -->
+                            <% if (machine.occasions.length) { %>
+                                <h4>
+                                    <div class="h4_partie_gauche" style="
+                                    background-color : <%= choice.couleur %>;
+                                    "></div>
+                                    <span class="h4_titre">Occasions</span>
+                                    <div class="h4_partie_droite" style="
+                                    background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                                    "></div>
+                                </h4>
+                                <div class="gamme_detail_occassions">
+                                <% for (var Occ = 0; Occ < machine.occasions.length; Occ++) { %>
+                                    <a class="gamme_detail_occasions_lien" href="/section/<%= choice._id %>/occasions/<%= machine.occasions[Occ]._id %>">
+                                        <div class="occas_lien_icone" style=""
+
+                                        ></div>
+                                        <span class="occas_lien_nom"><%= machine.occasions[Occ].nom_machine %></span>
+                                        <% if (machine.occasions[Occ].date_mise_en_service) { %>
+                                            <span class="occas_lien_date"><%= machine.occasions[Occ].date_mise_en_service.getFullYear() %></span>
+                                        <% } %>
+                                    </a>
+                                <% } %>
+                                </div>
+                            <% } %>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- La bannière en bas de page -->
+        <footer>
+            <div id="main_pied_page">
+                <div id="footer_contact">
+                    <img src="../../../images/aur1_logo_small.png"/>
+                    <span id="footer_contact_texte">
+                        <h3>
+                            <div class="h3_partie_sup">
+                                <div class="h3_partie_gauche">
+                                    <div class="h3_1" style="
+                                    background-color : <%= choice.couleur_light %>;
+                                    "></div>
+                                    <div class="h3_2" style="
+                                    background-color : <%= choice.couleur_light %>;
+                                    "></div>
+                                    <div class="h3_3" style="
+                                    background-color : <%= choice.couleur %>;
+                                    "></div>
+                                </div>
+                                <span class="h3_titre" id="titre_meteo">Coordonnées</span>
+                            </div>
+                            <div class="h3_ligne_bottom" style="
+                            background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                            "></div>
+                        </h3>
+                        <span>Z.I.A de Belle Fontaine</span>
+                        <span>44270 PAULX</span>
+                        <span>Tèl  : 02 51 70 08 08</span>
+                        <span>Fax  : 02 51 70 09 93</span>
+                        <span>mail : aur1.ww@gmail.com</span>
+                    </span>
+                </div>
+                <div id="footer_interlocuteur">
+                    <h3>
+                        <div class="h3_partie_sup">
+                            <div class="h3_partie_gauche">
+                                <div class="h3_1" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_2" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_3" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                            </div>
+                            <span class="h3_titre" id="titre_meteo">Vos interlocuteurs</span>
+                        </div>
+                        <div class="h3_ligne_bottom" style="
+                        background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                        "></div>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td class="footer_italic">Commercial :</td>
+                            <td class="footer_name">Dominique</td>
+                            <td><div class="footer_puce"></div></td>
+                            <td>06 33 70 57 59</td>
+                        </tr>
+                        <tr>
+                            <td class="footer_italic">Technique :</td>
+                            <td class="footer_name">Pierrick</td>
+                            <td><div class="footer_puce"></div></td>
+                            <td>06 76 09 78 01</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="footer_plan_site">
+                    <h3>
+                        <div class="h3_partie_sup">
+                            <div class="h3_partie_gauche">
+                                <div class="h3_1" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_2" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_3" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                            </div>
+                            <span class="h3_titre" id="titre_meteo">Plan du site</span>
+                        </div>
+                        <div class="h3_ligne_bottom" style="
+                        background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                        "></div>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td><a href="/">Index</a></td>
+                            <td><a href="/section/<%= choice._id %>"><%= choice.nom %></a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= no_choice[0]._id %>"><%= no_choice[0].nom %></a></td>
+                            <td><a href="/section/<%= no_choice[1]._id %>"><%= no_choice[1].nom %></a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= no_choice[2]._id %>"><%= no_choice[2].nom %></a></td>
+                            <td><a href="/section/<%= choice._id %>/presentation">Présentation</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= choice._id %>/news">actualités</a></td>
+                            <td><a href="/section/<%= choice._id %>/occasions">Occasions</a></td>
+
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= choice._id %>/gamme">Gamme</a></td>
+                            <td><a href="/section/<%= choice._id %>/contact">Contact</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </footer>
+
+
+
+
+        <!-- Appel du script Jquery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <!-- API lightbox -->
+        <script type="text/javascript" src="../../../javascripts/html5lightbox/html5lightbox.js"></script>
+        <!--<script type="text/javascript" src="../../../javascripts/fancybox/jquery.fancybox-1.3.4.pack.js"></script>-->
+        <!-- Appel des scripts contextuel -->
+        <script src="../../../javascripts/section.js"></script>
+        <!--<script type="text/javascript" src="../../../javascripts/galleries.js"></script>-->
+    </body>
+
+</html>

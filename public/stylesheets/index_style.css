@@ -1,0 +1,171 @@
+/* ----===== Page n°1 : INDEX
+    le logo est centré, 4 choix possible de liens gravite autour de ce logo
+ */
+
+/* determination de la hauteur du body a 100% du viewport */
+html {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #221d16;
+    background-image: url("../images/path4718.png");
+    background-position: center;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ /* l'image du logo centré */
+ #index_logo {
+     min-width: 751px;
+     max-height: 431px;
+     max-width: 751px;
+     max-height: 431px;
+}
+
+/* la section "sous titre" qui contient le slogan et le logo wagner */
+#index_sous_titre {
+    position: absolute;
+    align-self: flex-start;
+    top: 220px;
+    left: 0px;
+    text-align: right;
+    /* dev work's
+    background-color: red; */
+}
+
+#block_logo {
+    align-self: stretch;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #bcb7b6;
+    /*background-color: #f4f1ec;*/
+    background-image: url("../images/path4730.png");
+    background-repeat: repeat;
+}
+
+    /* Le slogan sur l'imporatation wagner, sous le logo de l'entreprise */
+    #index_slogan {
+        vertical-align: top;
+        font-family: 'enigmaticregular';
+        background-color: #1d1811;
+        padding-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 4px;
+        border-radius: 0 17px 0 0;
+        text-align: right;
+        padding-right: 10px;
+        box-shadow: 3px 3px 6px #3b3b3b;
+        font-size: 1.5em;
+        color: #bfbfbf;
+        text-transform: uppercase;
+        /* dev work's
+        background-color: red; */
+    }
+
+    /* le block contenant le logo wagner */
+    #index_logo_wagner {
+        border-radius: 0 0 15px 15px;
+        box-shadow: 2px 2px 4px #767676 inset;
+        padding: 10px;
+        /* dev work's */
+        background-color: #ebe9e9;
+    }
+
+/* la barre de séparation entre le logo et le choix de la section */
+#index_barre_separation {
+    margin-bottom: 0px;
+    width: 100%;
+    height: 15px;
+    background-color: #eda406;
+    box-shadow: 0px -2px 3px #000000;
+}
+
+/* le block contenant les quatre choix de section du site */
+#index_choix_section {
+    align-self: stretch;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    padding-top: 20px;
+    flex: 1 0 auto;
+    padding-bottom: 15px;
+    /*dev work's*/
+    box-shadow: 0px 5px 3px #000000 inset;
+
+}
+
+    /* 3) titres de section */
+    /*.index_titre_section {
+        display: flex;
+        flex-basis: 418px;
+        min-height: 510px;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 0px 0px 0px;
+        margin: 0px 3px 0px 3px;
+        border-radius: 8em 15% 40% 5%;
+    }*/
+
+    .index_titre_section {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 22%;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 0px 0px 0px;
+        margin: 0px 3px 0px 3px;
+    }
+
+        .index_titre_section img {
+            -ms-transform: skewX(-3deg); /* IE 9 */
+            -webkit-transform: skewX(-3deg); /* Safari */
+            transform: skewX(-3deg);
+            align-self: flex-end;
+            margin-right: 35px;
+            margin-bottom: -15px;
+            max-width: 90%;
+            max-height: 392px;
+            z-index: 1;
+            border-radius: 5em 15% 0 0;
+            box-shadow: 4px 2px 10px #0d0d0d;
+        }
+
+
+        .index_titre_section a {
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 3.5em;
+            /* le cadre */
+            border: 3px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 5px 5px 10px black,
+                        3px 3px 7px #1e1e1e inset;
+            border-radius: 30% 0.7em 60% 15%;
+            font-family: 'enigmaticregular';
+            font-size: 1.8em;
+            text-shadow: 4px 5px 9px #1d1d1d;
+            letter-spacing: 1px;
+            color: #ededed;
+            margin: 0;
+        }
+
+
+/* ============================================================= FIN Page n°1 */

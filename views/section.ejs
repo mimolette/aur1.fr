@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- import des polices -->
+        <link rel="stylesheet" href="../stylesheets/polices_style.css" />
+        <!-- style général -->
+        <link rel="stylesheet" href="../stylesheets/main_style.css" />
+        <title>Aur1</title>
+    </head>
+
+    <body style="
+        background : url('../<%= choice.imgbandeau %>') no-repeat fixed center;
+        background-size: cover;
+    ">
+
+        <!-- La barre horizontale supérieure de la fenêtre, elle contient
+        quelques liens vers les autres sections et peut etre un fonction de
+        recherche de machine -->
+        <div id="main_top_barre">
+            <div id="main_top_barre_contenu">
+                <a href="../" class="main_return"><img src="../images/Retour_acceuil.svg"/></a>
+                <a href="/section/<%= choice._id %>" class="main_top_bordered" style="order : <%= choice.ordre %>"><%= choice.nom %></a>
+                <% for (var i = 0; i < no_choice.length; i++) { %>
+                    <a href="/section/<%= no_choice[i]._id %>/gamme" class="main_top_bordered" style="order : <%= no_choice[i].ordre %>"><%= no_choice[i].nom %></a>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Le bandeau du menu et du logo de l'entreprise -->
+        <div id="main_menu" style="
+        background: -webkit-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../images/path4730.png');
+        background: -o-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../images/path4730.png');
+        background: -moz-linear-gradient(right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../images/path4730.png');
+        background: linear-gradient(to right, rgba(255,255,255,0.0) 15% , <%= choice.couleur_light %> 50%,  <%= choice.couleur %> 95%), #bcb7b6 url('../images/path4730.png');
+        ">
+            <div id="main_menu_contenu">
+                <a href="/section/<%= choice._id %>" id="main_menu_img"></a>
+                <ul>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/presentation">
+                            <span class="menu_titre">Présentation</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>">
+                            <span class="menu_titre">Les Actualités</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/gamme">
+                            <span class="menu_titre">La Gamme</span>
+                            <span class="bouton_gamme_section"><%= choice.nom %></span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/occasions">
+                            <span class="menu_titre">Les Occasions</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+
+                    </li>
+                    <li class="li_<%= choice.nom_class %>">
+                        <a href="/section/<%= choice._id %>/contact">
+                            <span class="menu_titre">Contact</span>
+                            <div class="menu_effet_bouton">
+                                <div></div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- le bandeau qui représente la section choisi -->
+        <div id="main_section" style="
+        background: url('../images/path_hexagone.png') repeat, linear-gradient(240deg, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%), url('../images/<%= choice.img2 %>') no-repeat right;
+        background-size: auto, auto, contain;
+        ">
+            <div id="main_section_titre" ><%= choice.nom %></div>
+
+        </div>
+
+        <!-- Contenu de la page d'acceuil, news, présentation, ... -->
+        <!-- dev work's -->
+        <div class="main_content">
+
+            <div id="main_news">
+                <h3>
+                    <div class="h3_partie_sup">
+                        <div class="h3_partie_gauche">
+                            <div class="h3_1" style="
+                            background-color : <%= choice.couleur_light %>;
+                            "></div>
+                            <div class="h3_2" style="
+                            background-color : <%= choice.couleur_light %>;
+                            "></div>
+                            <div class="h3_3" style="
+                            background-color : <%= choice.couleur %>;
+                            "></div>
+                        </div>
+                        <span class="h3_titre">Les actualités</span>
+                    </div>
+                    <div class="h3_ligne_bottom" style="
+                    background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                    "></div>
+                </h3>
+                <!-- On affiche les X derniers actualités de l'entreprise -->
+                <% for (var i = 0; i < 5; i++) { %>
+                    <div class="main_news_article">
+                        <div class="main_news_style_contenu">
+                            <span class="main_news_date">
+                                <span><%= actualites[i].creation.getDate().toString().length == 1 ? "0" + actualites[i].creation.getDate() : actualites[i].creation.getDate() %></span>
+                                <span class="main_news_mois"><%= traduction[i] %></span>
+                                <span><%= actualites[i].creation.getFullYear() %></span>
+                            </span>
+                            <span class="main_news_titre"><%= actualites[i].titre %></span>
+                            <div class="news_underligne"></div>
+                            <div class="main_news_texte">
+                                <% for (var t = 0; t < actualites[i].texte.length; t++) { %>
+                                    <% if (~actualites[i].texte[t].indexOf('li/')) { %>
+                                        <% if (~actualites[i].texte[t].indexOf('start/')) { %>
+                                            <ul><li><%= actualites[i].texte[t].substring(9) %></li>
+                                        <% } else if (~actualites[i].texte[t].indexOf('end/')) { %>
+                                            <li><%= actualites[i].texte[t].substring(7) %></li></ul>
+                                        <% } else { %>
+                                            <li><%= actualites[i].texte[t].substring(3) %></li>
+                                        <% } %>
+                                    <% } else if (~actualites[i].texte[t].indexOf('link/')) { %>
+                                        <a href="<%= actualites[i].texte[t].substring(5) %>">Pour plus de détails...</a>
+                                    <% } else { %>
+                                        <p><%= actualites[i].texte[t] %></p>
+                                    <% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                        <% if (actualites[i].img.length || actualites[i].video.length) { %>
+                            <div class="news_underligne_reverse"></div>
+                            <div class="news_list_img">
+                                <% for (var img = 0; img < actualites[i].img.length; img++) { %>
+                                    <a href="../images/Actualites/originaux/<%= actualites[i].img[img] %>" class="html5lightbox" data-group="<%= actualites[i]._id %>" style="
+                                    background: url('../images/Actualites/gabarits/tn_<%= actualites[i].img[img] %>') no-repeat center;
+                                    background-size: contain;
+                                    "></a>
+                                <% } %>
+                                <% for (var v = 0; v < actualites[i].video.length; v++) { %>
+                                    <a href="../images/Actualites/videos/<%= actualites[i].video[v] %>.mp4" class="html5lightbox" data-group="<%= actualites[i]._id %>" data-width="720" data-height="480"  style="
+                                    background: url('../images/Actualites/gabarits/tn_<%= actualites[i].video[v] %>.jpg') no-repeat center;
+                                    background-size: contain;
+                                    "></a>
+                                <% } %>
+                            </div>
+
+                        <% } %>
+                    </div>
+                <% } %>
+            </div>
+
+
+            <!-- <div id="main_meteo">
+                <div id="test"></div>
+                <h3>
+                    <div class="h3_partie_sup">
+                        <div class="h3_partie_gauche">
+                            <div class="h3_1" style="
+                            background-color : <%= choice.couleur_light %>;
+                            "></div>
+                            <div class="h3_2" style="
+                            background-color : <%= choice.couleur_light %>;
+                            "></div>
+                            <div class="h3_3" style="
+                            background-color : <%= choice.couleur %>;
+                            "></div>
+                        </div>
+                        <span class="h3_titre" id="titre_meteo">La météo à ... (...)</span>
+                    </div>
+                    <div class="h3_ligne_bottom" style="
+                    background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                    "></div>
+                </h3>
+                <div id="jour1">
+                    <div id="jour1_gauche">
+                        <div id="jour1_temp">....</div>
+                        <div id="jour1_desc">
+                            <p id="jour1_description" class="champ_donnee">......................</p>
+                            <p><span class="meteo_champ">humidité:</span><span id="jour1_humidite" class="champ_donnee">...</span></p>
+                            <p><span class="meteo_champ">vent:</span><span id="jour1_vent" class="champ_donnee">..........</span></p>
+                        </div>
+                    </div>
+                    <div id="jour1_droite">
+                        <h5 id="jour1_date">......................................</h5>
+                        <div><img id="jour1_icon" src="../images/icones_meteo/00.png"/></div>
+                    </div>
+                </div>
+                <div id="jour_suivants">
+                    <div class="jour_next" id="jour2">
+                        <h5 id="jour2_date">..........</h5>
+                        <div class="ico_temp">
+                            <div class="ico_temp_ico"><img id="jour2_icon" src="../images/icones_meteo/00.png"/></div>
+                            <div class="ico_temp_temp">
+                                <p><span class="meteo_champ">min: </span><span id="jour2_temp_min" class="champ_donnee">....</span></p>
+                                <p><span class="meteo_champ">max: </span><span id="jour2_temp_max" class="champ_donnee">....</span></p>
+                            </div>
+                        </div>
+                        <div class="jour_next_desc">
+                            <p id="jour2_description" class="champ_donnee">...............</p>
+                            <p><span class="meteo_champ">humidité:</span><span id="jour2_humidite" class="champ_donnee"></span></p>
+                            <p><span class="meteo_champ">vent:</span><span id="jour2_vent" class="champ_donnee"></span></p>
+                        </div>
+                    </div>
+                    <div class="jour_next"  id="jour3">
+                        <h5 id="jour3_date">..........</h5>
+                        <div class="ico_temp">
+                            <div class="ico_temp_ico"><img id="jour3_icon" src="../images/icones_meteo/00.png"/></div>
+                            <div class="ico_temp_temp">
+                                <p><span class="meteo_champ">min: </span><span id="jour3_temp_min" class="champ_donnee">....</span></p>
+                                <p><span class="meteo_champ">max: </span><span id="jour3_temp_max" class="champ_donnee">....</span></p>
+                            </div>
+                        </div>
+                        <div class="jour_next_desc">
+                            <p id="jour3_description" class="champ_donnee">...............</p>
+                            <p><span class="meteo_champ">humidité:</span><span id="jour3_humidite" class="champ_donnee"></span></p>
+                            <p><span class="meteo_champ">vent:</span><span id="jour3_vent" class="champ_donnee"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- La bannière en bas de page -->
+        <footer>
+            <div id="main_pied_page">
+                <div id="footer_contact">
+                    <img src="../images/aur1_logo_small.png"/>
+                    <span id="footer_contact_texte">
+                        <h3>
+                            <div class="h3_partie_sup">
+                                <div class="h3_partie_gauche">
+                                    <div class="h3_1" style="
+                                    background-color : <%= choice.couleur_light %>;
+                                    "></div>
+                                    <div class="h3_2" style="
+                                    background-color : <%= choice.couleur_light %>;
+                                    "></div>
+                                    <div class="h3_3" style="
+                                    background-color : <%= choice.couleur %>;
+                                    "></div>
+                                </div>
+                                <span class="h3_titre" id="titre_meteo">Coordonnées</span>
+                            </div>
+                            <div class="h3_ligne_bottom" style="
+                            background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                            "></div>
+                        </h3>
+                        <span>Z.I.A de Belle Fontaine</span>
+                        <span>44270 PAULX</span>
+                        <span>Tèl  : 02 51 70 08 08</span>
+                        <span>Fax  : 02 51 70 09 93</span>
+                        <span>mail : aur1.ww@gmail.com</span>
+                        <!--<a href="/section/<%= no_choice[0]._id %>/mentions-legales">mentions légales</a>-->
+                    </span>
+                </div>
+                <div id="footer_interlocuteur">
+                    <h3>
+                        <div class="h3_partie_sup">
+                            <div class="h3_partie_gauche">
+                                <div class="h3_1" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_2" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_3" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                            </div>
+                            <span class="h3_titre" id="titre_meteo">Vos interlocuteurs</span>
+                        </div>
+                        <div class="h3_ligne_bottom" style="
+                        background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                        "></div>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td class="footer_italic">Commercial :</td>
+                            <td class="footer_name">Dominique</td>
+                            <td><div class="footer_puce"></div></td>
+                            <td>06 33 70 57 59</td>
+                        </tr>
+                        <tr>
+                            <td class="footer_italic">Technique :</td>
+                            <td class="footer_name">Pierrick</td>
+                            <td><div class="footer_puce"></div></td>
+                            <td>06 76 09 78 01</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="footer_plan_site">
+                    <h3>
+                        <div class="h3_partie_sup">
+                            <div class="h3_partie_gauche">
+                                <div class="h3_1" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_2" style="
+                                background-color : <%= choice.couleur_light %>;
+                                "></div>
+                                <div class="h3_3" style="
+                                background-color : <%= choice.couleur %>;
+                                "></div>
+                            </div>
+                            <span class="h3_titre" id="titre_meteo">Plan du site</span>
+                        </div>
+                        <div class="h3_ligne_bottom" style="
+                        background : linear-gradient(to left, rgba(255,255,255,0.0) 20% , <%= choice.couleur_light %> 45%,  <%= choice.couleur %> 85%);
+                        "></div>
+                    </h3>
+                    <table>
+                        <tr>
+                            <td><a href="/">Index</a></td>
+                            <td><a href="/section/<%= choice._id %>"><%= choice.nom %></a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= no_choice[0]._id %>"><%= no_choice[0].nom %></a></td>
+                            <td><a href="/section/<%= no_choice[1]._id %>"><%= no_choice[1].nom %></a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= no_choice[2]._id %>"><%= no_choice[2].nom %></a></td>
+                            <td><a href="/section/<%= choice._id %>/presentation">Présentation</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= choice._id %>/news">actualités</a></td>
+                            <td><a href="/section/<%= choice._id %>/occasions">Occasions</a></td>
+
+                        </tr>
+                        <tr>
+                            <td><a href="/section/<%= choice._id %>/gamme">Gamme</a></td>
+                            <td><a href="/section/<%= choice._id %>/contact">Contact</a></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Appel du script Jquery -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+        <!-- API lightbox -->
+        <script type="text/javascript" src="../../../javascripts/html5lightbox/html5lightbox.js"></script>
+        <!-- Appel des scripts contextuel -->
+        <!-- <script src="../javascripts/meteo.js"></script> -->
+        <script src="../javascripts/section.js"></script>
+    </body>
+
+</html>

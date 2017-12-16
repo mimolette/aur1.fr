@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <!-- import des polices -->
+        <link rel="stylesheet" href="stylesheets/polices_style.css" />
+        <!-- style général -->
+        <link rel="stylesheet" href="stylesheets/index_style.css" />
+        <title>Aur1</title>
+    </head>
+
+    <body>
+
+        <!-- Logo de l'entreprise centré -->
+        <div id="block_logo">
+            <img src="images/aur1_logo.png" alt="Aur1 sarl" id="index_logo"/>
+        </div>
+
+
+        <!-- block contenant le slogan et le logo wagner -->
+        <div id="index_sous_titre">
+            <!-- le slogan sur wagner -->
+            <div id="index_slogan">importateur france des matériels</div>
+            <!-- logo de wagner -->
+            <a href="http://w-p-t.biz/" target="_blank"><img src="images/Marques/wagner.png" alt="logo wagner" id="index_logo_wagner"/></a>
+        </div>
+
+        <!-- barre de séparation -->
+        <div id="index_barre_separation"></div>
+
+        <!-- Block qui contient l'ensemble des quatre choix possible -->
+        <div id="index_choix_section">
+            <!-- l'ensemble des choix de section -->
+            <% for (var i = 0; i < choix_all.length; i++) { %>
+                <!-- Block conteneur -->
+                <div class="index_titre_section" style="
+                order: <%= choix_all[i].ordre %>
+                ">
+                    <img src="<%= choix_all[i].img1 %>"/>
+                    <a href="/section/<%= choix_all[i]._id %>/gamme" style="
+                    background:  url('/images/path_hexagone.png') repeat, linear-gradient(240deg, <%= choix_all[i].couleur %> 20% , <%= choix_all[i].couleur_light %> 45%,  <%= choix_all[i].couleur %> 85%);
+                    "><%= choix_all[i].nom %></a>
+                </div>
+
+
+            <% } %>
+        </div>
+
+        <!-- Appel du script Jquery -->
+        <script src="javascripts/jquery.js"></script>
+        <!-- Appel des scripts contextuel -->
+    </body>
+
+</html>
